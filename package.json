@@ -1,0 +1,21 @@
+{
+  "name": "image-view-transition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "postcss ./src/input.css --output ./dist/output.css --watch",
+    "build": "postcss ./src/input.css --output ./dist/output.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.27",
+    "postcss-cli": "^10.1.0",
+    "postcss-nesting": "^12.0.0",
+    "postcss-preset-env": "^9.1.0",
+    "tailwindcss": "^3.3.3"
+  }
+}
