@@ -1,14 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/dist/output.css" rel="stylesheet">
-</head>
-<body class="grid place-content-center min-h-screen">
-  <div class="mx-auto max-w-2xl flex gap-5 items-center">
-    <img src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?fit=crop&w=80&h=80&q=80" class="">
-    <a href="" class="text-xl">This is the title</a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+  </head>
+  <body class="grid place-content-center min-h-screen">
+    <div id="two" class="mx-auto hidden">
+      <a href="" class="" id="back">Back</a>
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?fit=crop&w=1200&h=600&q=80"
+        class="transition-grow"
+      />
+    </div>
+    <div id="one" class="mx-auto max-w-2xl flex gap-5 items-center relative">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?fit=crop&w=1200&h=600&q=80"
+        class="w-20 h-20 transition-grow object-cover"
+      />
+      <a href="" class="text-xl before:absolute before:inset-0" id="clickMe"
+        >This is the title</a
+      >
+    </div>
+
+    <script>
+      var clickMeLink = document.getElementById("clickMe");
+      var back = document.getElementById("back");
+      var divOne = document.getElementById("one");
+      var divTwo = document.getElementById("two");
+
+      clickMeLink.addEventListener("click", async function (event) {
+        event.preventDefault();
+        const growTransition = document.startViewTransition(() => {
+          divOne.classList.add("hidden");
+          divTwo.classList.remove("hidden");
+        });
+        await growTransition.finished;
+        const transitionGrowElements =
+          document.querySelectorAll(".transition-grow");
+
+        for (const element of transitionGrowElements) {
+          element.classList.remove("transition-grow");
+          element.classList.add("transition-shrink");
+        }
+      });
+
+      back.addEventListener("click", function (event) {
+        event.preventDefault();
+        document.startViewTransition(() => {
+          divOne.classList.remove("hidden");
+          divTwo.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
 </html>
